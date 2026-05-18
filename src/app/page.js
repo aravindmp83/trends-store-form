@@ -7,7 +7,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default function StoreForm() {
+export default function Page() {
   const [searchCode, setSearchCode] = useState('');
   const [storeData, setStoreData] = useState(null);
   const [postcardData, setPostcardData] = useState({ received: false, packs_made: false });
@@ -22,7 +22,7 @@ export default function StoreForm() {
       .single();
 
     if (error || !data) {
-      setStatus('Store not found. Please verify the Store Code.');
+      setStatus("Enter a Store_Code to fetch");
       setStoreData(null);
     } else {
       setStoreData(data);
