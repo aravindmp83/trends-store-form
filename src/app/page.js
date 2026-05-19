@@ -80,23 +80,23 @@ export default function StoreForm() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 text-slate-800 font-sans antialiased">
-      <div className="w-full max-w-sm bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden px-6 py-8 space-y-6">
+    <div style={{ minHeight: '100vh', backgroundColor: '#f8fafc', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+      <div style={{ width: '100%', maxWidth: '380px', backgroundColor: '#ffffff', borderRadius: '24px', boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05)', border: '1px solid #f1f5f9', overflow: 'hidden', padding: '28px 24px' }}>
         
         {/* Sleek Branding Minimal Header */}
-        <div className="text-center space-y-1">
-          <h2 className="text-2xl font-black tracking-tight text-slate-900">TRENDS</h2>
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest">Update Store Profile</p>
+        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: '900', letterSpacing: '-0.025em', color: '#0f172a', margin: '0' }}>TRENDS</h2>
+          <p style={{ fontSize: '11px', fontWeight: '700', color: '#94a3b8', uppercase: 'true', letterSpacing: '0.1em', margin: '4px 0 0 0' }}>STORE PROFILE UPDATE</p>
         </div>
         
         {!storeData ? (
           /* Premium Input Screen */
-          <div className="space-y-5 pt-2">
-            <div className="space-y-1">
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Store Code</label>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <label style={{ fontSize: '11px', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Enter Store Code</label>
               <input 
                 type="text" 
-                className="w-full border-b-2 border-slate-200 focus:border-blue-600 outline-none py-2 text-xl font-bold text-slate-900 tracking-widest uppercase transition-all bg-transparent placeholder-slate-300"
+                style={{ w: '100%', border: 'none', borderBottom: '2px solid #cbd5e1', outline: 'none', padding: '8px 0', fontSize: '20px', fontWeight: '800', color: '#0f172a', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'all 0.2s' }}
                 placeholder="E.G. TAV7"
                 value={searchCode}
                 onChange={(e) => setSearchCode(e.target.value)}
@@ -105,40 +105,40 @@ export default function StoreForm() {
             
             <button 
               onClick={fetchStore} 
-              className="w-full bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white py-3.5 rounded-xl font-bold tracking-wide transition-all text-base shadow-lg shadow-blue-100 mt-2"
+              style={{ width: '100%', backgroundColor: '#2563eb', color: '#ffffff', padding: '14px', borderRadius: '12px', fontSize: '16px', fontWeight: '700', border: 'none', cursor: 'pointer', boxShadow: '0 4px 12px rgba(37, 99, 235, 0.15)' }}
             >
               Verify Store Code
             </button>
             
-            {status && <p className="text-xs font-semibold text-red-600 bg-red-50 p-3 rounded-xl border border-red-100 text-center">{status}</p>}
+            {status && <p style={{ fontSize: '13px', fontWeight: '600', color: '#dc2626', backgroundColor: '#fef2f2', padding: '12px', borderRadius: '12px', border: '1px solid #fee2e2', textAlign: 'center', margin: '0' }}>{status}</p>}
           </div>
         ) : (
           /* Smooth Mobile Form View */
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
             
             {/* Context Header */}
-            <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 space-y-1">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Active Workspace</p>
-              <p className="text-base font-extrabold text-slate-800">{storeData.Store_Code} — {storeData.Store_Name}</p>
+            <div style={{ backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '12px 16px' }}>
+              <p style={{ fontSize: '10px', fontWeight: '700', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0' }}>Active Workspace</p>
+              <p style={{ fontSize: '14px', fontWeight: '800', color: '#334155', margin: '2px 0 0 0', lineHeight: '1.4' }}>{storeData.Store_Code} — {storeData.Store_Name}</p>
             </div>
 
-            {/* Premium Floating-Style Input Fields */}
-            <div className="space-y-5">
-              <div className="space-y-1">
-                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">City</label>
+            {/* Inputs Group */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <label style={{ fontSize: '11px', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>City</label>
                 <input 
                   type="text" 
-                  className="w-full border-b border-slate-200 focus:border-blue-600 outline-none py-1.5 text-base font-semibold text-slate-900 transition-all bg-transparent"
+                  style={{ width: '100%', border: 'none', borderBottom: '1px solid #e2e8f0', outline: 'none', padding: '6px 0', fontSize: '15px', fontWeight: '600', color: '#0f172a' }}
                   value={storeData.City || ''}
                   onChange={(e) => setStoreData({...storeData, City: e.target.value})}
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Store Manager Name</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <label style={{ fontSize: '11px', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Store Manager Name</label>
                 <input 
                   type="text" 
-                  className="w-full border-b border-slate-200 focus:border-blue-600 outline-none py-1.5 text-base font-semibold text-slate-900 transition-all bg-transparent placeholder-slate-300"
+                  style={{ width: '100%', border: 'none', borderBottom: '1px solid #e2e8f0', outline: 'none', padding: '6px 0', fontSize: '15px', fontWeight: '600', color: '#0f172a' }}
                   placeholder="Enter full name"
                   value={storeData.SM || ''}
                   onChange={(e) => setStoreData({...storeData, SM: e.target.value})}
@@ -146,11 +146,11 @@ export default function StoreForm() {
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider">SM Mobile Number</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <label style={{ fontSize: '11px', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>SM Mobile Number</label>
                 <input 
                   type="number" 
-                  className="w-full border-b border-slate-200 focus:border-blue-600 outline-none py-1.5 text-base font-semibold text-slate-900 transition-all bg-transparent tracking-wide placeholder-slate-300"
+                  style={{ width: '100%', border: 'none', borderBottom: '1px solid #e2e8f0', outline: 'none', padding: '6px 0', fontSize: '15px', fontWeight: '600', color: '#0f172a', letterSpacing: '0.02em' }}
                   placeholder="Enter 10-digit number"
                   value={storeData.SM_Mobile || ''}
                   onChange={(e) => setStoreData({...storeData, SM_Mobile: e.target.value})}
@@ -159,42 +159,47 @@ export default function StoreForm() {
               </div>
             </div>
 
-            {/* Campaign Visual and Status Question */}
-            <div className="space-y-4 pt-2 border-t border-slate-100">
+            {/* Campaign Logistics Selection Card */}
+            <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
               
-              {/* Postcard Image directly linked above the question */}
-              <div className="bg-slate-50 border border-slate-200/60 rounded-xl p-2.5">
-                <p className="text-[10px] font-bold text-slate-400 uppercase text-center tracking-wider mb-2">Campaign Reference Media</p>
-                <div className="w-full rounded-lg overflow-hidden bg-white shadow-sm border border-slate-100">
+              {/* Campaign Visual Reference Box */}
+              <div style={{ backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '16px', padding: '12px', textAlign: 'center' }}>
+                <p style={{ fontSize: '10px', fontWeight: '700', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 8px 0' }}>Campaign Postcard Reference</p>
+                <div style={{ backgroundColor: '#ffffff', borderRadius: '10px', overflow: 'hidden', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100px' }}>
+                  {/* Using standard absolute path configuration to load the image flawlessly */}
                   <img 
                     src="/postcard.png" 
-                    alt="Campaign Postcard Reference" 
-                    className="w-full h-auto max-h-[140px] object-contain mx-auto"
+                    alt="TRENDS Coupon Postcard" 
+                    style={{ width: '100%', height: 'auto', maxHeight: '120px', objectFit: 'contain', display: 'block' }}
+                    onError={(e) => {
+                      // Fallback visual indicator if local deployment routing delay hits
+                      e.target.style.display = 'none';
+                    }}
                   />
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Have you received post cards from Vendor?</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label style={{ fontSize: '11px', fontWeight: '700', color: '#475569', lineHeight: '1.4' }}>Have you received post cards from Vendor?</label>
                 <select 
-                  className="w-full border border-slate-200 focus:border-blue-600 outline-none p-3 rounded-xl bg-white font-semibold text-slate-700 h-12 shadow-sm text-sm"
+                  style={{ width: '100%', border: '1px solid #e2e8f0', outline: 'none', padding: '12px', borderRadius: '12px', backgroundColor: '#ffffff', fontSize: '14px', fontWeight: '600', color: '#334155', height: '48px', boxShadow: '0 1px 2px rgba(0,0,0,0.02)' }}
                   value={postcardStatus}
                   onChange={(e) => setPostcardStatus(e.target.value)}
                   required
                 >
-                  <option value="" disabled>-- Select Current Status --</option>
+                  <option value="" disabled>-- Select Status --</option>
                   <option value="chennai_yes">Chennai store - yes received it</option>
                   <option value="rotn_yes">RoTN store received it</option>
                   <option value="not_received">Not yet received</option>
                 </select>
               </div>
 
-              {/* Conditional Options Render Blocks */}
+              {/* Chennai Conditions Box */}
               {postcardStatus === 'chennai_yes' && (
-                <div className="p-4 border border-blue-100 bg-blue-50/40 rounded-xl space-y-2">
-                  <label className="block text-xs font-bold text-blue-900 leading-normal">Have you made bundles of 500 and kept it ready for dispatch to Zepto?</label>
+                <div style={{ padding: '14px', border: '1px solid #bfdbfe', backgroundColor: '#eff6ff', borderRadius: '14px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: '700', color: '#1e3a8a', lineHeight: '1.4' }}>Have you made bundles of 500 and kept it ready for dispatch to Zepto?</label>
                   <select 
-                    className="w-full border border-slate-200 focus:border-blue-600 outline-none p-2.5 rounded-lg bg-white font-semibold text-slate-700 text-sm"
+                    style={{ width: '100%', border: '1px solid #dbeafe', outline: 'none', padding: '10px', borderRadius: '10px', backgroundColor: '#ffffff', fontSize: '13px', fontWeight: '600', color: '#1e40af' }}
                     value={packsMade}
                     onChange={(e) => setPacksMade(e.target.value)}
                   >
@@ -204,11 +209,12 @@ export default function StoreForm() {
                 </div>
               )}
 
+              {/* RoTN Conditions Box */}
               {postcardStatus === 'rotn_yes' && (
-                <div className="p-4 border border-emerald-100 bg-emerald-50/30 rounded-xl space-y-2">
-                  <label className="block text-xs font-bold text-emerald-900 leading-normal">Have you started localized neighborhood distribution?</label>
+                <div style={{ padding: '14px', border: '1px solid #a7f3d0', backgroundColor: '#ecfdf5', borderRadius: '14px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label style={{ fontSize: '12px', fontWeight: '700', color: '#064e3b', lineHeight: '1.4' }}>Have you started localized neighborhood distribution?</label>
                   <select 
-                    className="w-full border border-slate-200 focus:border-emerald-600 outline-none p-2.5 rounded-lg bg-white font-semibold text-slate-700 text-sm"
+                    style={{ width: '100%', border: '1px solid #d1fae5', outline: 'none', padding: '10px', borderRadius: '10px', backgroundColor: '#ffffff', fontSize: '13px', fontWeight: '600', color: '#065f46' }}
                     value={startedDistribution}
                     onChange={(e) => setStartedDistribution(e.target.value)}
                   >
@@ -218,26 +224,27 @@ export default function StoreForm() {
                 </div>
               )}
 
+              {/* Exception Handling Info Box */}
               {postcardStatus === 'not_received' && (
-                <div className="p-4 border border-amber-200 bg-amber-50/50 rounded-xl text-xs space-y-1 text-amber-900 leading-relaxed">
-                  <span className="font-bold uppercase tracking-wider block text-[10px] text-amber-800 mb-1">Required Action</span>
-                  Please secure the **POD number** from your dispatch vendor immediately and check delivery transit status.
+                <div style={{ padding: '14px', border: '1px solid #fde68a', backgroundColor: '#fffbef', borderRadius: '14px', fontSize: '12px', color: '#78350f', lineHeight: '1.5' }}>
+                  <span style={{ fontStyle: 'normal', fontWeight: '800', textTransform: 'uppercase', display: 'block', fontSize: '10px', color: '#92400e', marginBottom: '2px' }}>Required Action</span>
+                  Please check for the **POD number** from your dispatch vendor immediately and verify delivery transit status.
                 </div>
               )}
             </div>
 
-            {/* Save Button */}
-            <div className="pt-2">
+            {/* Submit Action */}
+            <div style={{ paddingTop: '4px' }}>
               <button 
                 type="submit" 
-                className="w-full bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold text-base p-4 rounded-xl transition-all shadow-lg shadow-blue-100"
+                style={{ width: '100%', backgroundColor: '#059669', color: '#ffffff', padding: '14px', borderRadius: '12px', fontSize: '16px', fontWeight: '700', border: 'none', cursor: 'pointer', boxShadow: '0 4px 12px rgba(5, 150, 105, 0.15)' }}
               >
                 Log Operational Updates
               </button>
             </div>
             
             {status && (
-              <p className={`text-center font-semibold p-3.5 rounded-xl text-xs ${status.includes('Successfully') ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' : 'bg-blue-50 text-blue-700 border border-blue-100'}`}>
+              <p style={{ textAlign: 'center', fontWeight: '700', padding: '12px', borderRadius: '12px', fontSize: '12px', margin: '0', backgroundColor: status.includes('Successfully') ? '#ecfdf5' : '#eff6ff', color: status.includes('Successfully') ? '#047857' : '#1d4ed8', border: status.includes('Successfully') ? '1px solid #a7f3d0' : '1px solid #bfdbfe' }}>
                 {status}
               </p>
             )}
